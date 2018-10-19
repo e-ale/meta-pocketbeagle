@@ -11,3 +11,4 @@ COMPATIBLE_MACHINE_pocketbeagle = "pocketbeagle"
 LINUX_VERSION_pocketbeagle = "4.18.9"
 
 SRC_URI += "file://defconfig"
+SRC_URI += "file://0002-Specify-the-mcp23s18-chip.patch"
