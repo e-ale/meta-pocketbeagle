@@ -1,0 +1,25 @@
+From bf194f4759d42cbc0f3590cbc64b692a10c4158a Mon Sep 17 00:00:00 2001
+From: Matt Porter <mporter@konsulko.com>
+Date: Sun, 21 Oct 2018 02:19:19 -0400
+Subject: [PATCH] disable ffmvforce build
+
+---
+ utils/Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/utils/Makefile b/utils/Makefile
+index 5b9bca6..fa4ca34 100644
+--- a/utils/Makefile
++++ b/utils/Makefile
+@@ -27,7 +27,7 @@
+ 
+ CFLAGS		?= -g -O2 -Wall
+ 
+-PROGRAMS	= inputattach jstest jscal fftest ffmvforce ffset \
++PROGRAMS	= inputattach jstest jscal fftest ffset \
+ 		  ffcfstress jscal-restore jscal-store evdev-joystick
+ 
+ PREFIX          ?= /usr/local
+-- 
+2.11.0
+
