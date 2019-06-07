@@ -1,7 +1,7 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}-${PV}:"
 
-LINUX_VERSION ?= "4.19.25"
+LINUX_VERSION ?= "4.19.31"
 KBRANCH ?= "4.19"
-SRCREV ?= "eb1e5b1a64ee6526a7cdb22357dcafc6ba643fbe"
+SRCREV ?= "9765c64614ca5e3b7f942ef3682d35991770a2fc"
 
 require linux-beagleboard.inc
