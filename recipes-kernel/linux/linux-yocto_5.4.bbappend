@@ -1,14 +1,14 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 
-KBRANCH_pocketbeagle = "v4.19/standard/beaglebone"
+KBRANCH_pocketbeagle = "v5.4/standard/beaglebone"
 
 KMACHINE_pocketbeagle ?= "beaglebone"
 
-SRCREV_machine_pocketbeagle ?= "f0c6c85e155632580bd44a5db01cbb19dcc1559c"
+SRCREV_machine_pocketbeagle ?= "706efec4c1e270ec5dda92275898cd465dfdc7dd"
 
 COMPATIBLE_MACHINE_pocketbeagle = "pocketbeagle"
 
-LINUX_VERSION_pocketbeagle = "4.19.44"
+LINUX_VERSION_pocketbeagle = "5.4.58"
 
 SRC_URI += "file://defconfig"
 SRC_URI += "file://0001-pocketbeagle-add-e-ale-paddle-device-and-gpio-pinmux.patch"

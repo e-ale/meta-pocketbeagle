@@ -38,7 +38,7 @@ do_install () {
     install -m 0644 ${S}/utils/extract ${D}${datadir}/joystick/
     install -m 0644 ${S}/utils/filter ${D}${datadir}/joystick/
     install -m 0644 ${S}/utils/ident ${D}${datadir}/joystick/
-    
+
     install -d ${D}${sysconfdir}/udev/rules.d
     install -m 0755 ${S}/utils/js-set-enum-leds ${D}${sysconfdir}/udev/
     install -m 0644 ${S}/utils/80-stelladaptor-joystick.rules ${D}${sysconfdir}/udev/rules.d/
