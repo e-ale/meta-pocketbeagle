@@ -1,8 +1,8 @@
-FILESEXTRAPATHS_prepend := "${THISDIR}/files:${THISDIR}/${PN}-5.4:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/files:${THISDIR}/${PN}-5.4:"
 
-KBRANCH_pocketbeagle = "v5.4/standard/beaglebone"
-KMACHINE_pocketbeagle ?= "beaglebone"
-COMPATIBLE_MACHINE_pocketbeagle = "pocketbeagle"
+KBRANCH:pocketbeagle = "v5.4/standard/beaglebone"
+KMACHINE:pocketbeagle ?= "beaglebone"
+COMPATIBLE_MACHINE:pocketbeagle = "pocketbeagle"
 
 SRC_URI += " \
 	file://defconfig \

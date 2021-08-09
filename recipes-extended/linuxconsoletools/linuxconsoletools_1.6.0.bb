@@ -19,7 +19,7 @@ EXTRA_OECONF += " \
         ${@bb.utils.contains('DISTRO_FEATURES', 'systemd', '-DSYSTEMD_SUPPORT=1', '', d)} \
 "
 
-do_compile_append () {
+do_compile:append () {
     oe_runmake -C utils 80-stelladaptor-joystick.rules
 }
 
