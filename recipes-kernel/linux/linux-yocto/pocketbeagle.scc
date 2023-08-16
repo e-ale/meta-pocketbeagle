@@ -1,0 +1,11 @@
+define KFEATURE_DESCRIPTION "tweaks from omap2plus_defconfig for the pocketbeagle"
+define KMACHINE pocketbeagle
+define KTYPE standard
+define KARCH arm
+
+include bsp/pocketbeagle/system-type.scc
+include bsp/pocketbeagle/fix-console.scc
+include bsp/pocketbeagle/update-leds.scc
+include bsp/pocketbeagle/omap-crypto.scc
+include bsp/pocketbeagle/pwm-counter.scc
+include bsp/pocketbeagle/pru-remoteproc-mbox.scc
