@@ -1,7 +1,7 @@
-From dd56180808ff22d55d18270dacfd4e3843a77144 Mon Sep 17 00:00:00 2001
+From 8a1978f9b736e1f41a4ca731c8d1e1822c5c03fa Mon Sep 17 00:00:00 2001
 From: Trevor Woerner <twoerner@gmail.com>
-Date: Tue, 15 Aug 2023 18:06:25 -0400
-Subject: [PATCH 3/3] ARM: dts: am335x-pocketbeagle: add missing GPIO mux
+Date: Tue, 15 Aug 2023 20:23:06 -0400
+Subject: [PATCH v3 4/4] ARM: dts: am335x-pocketbeagle: add missing GPIO mux
 
 Add the default MODE setting of a GPIO pin that was missing from the device
 tree (i.e. P2.20/gpio2_00). This is to ensure the GPIO pins match the
@@ -10,23 +10,14 @@ pocketbeagle wiring expectations.
 Upstream-Status: Submitted
 Signed-off-by: Trevor Woerner <twoerner@gmail.com>
 ---
- arch/arm/boot/dts/am335x-pocketbeagle.dts | 12 +++++++++++-
- 1 file changed, 11 insertions(+), 1 deletion(-)
+ arch/arm/boot/dts/am335x-pocketbeagle.dts | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
 diff --git a/arch/arm/boot/dts/am335x-pocketbeagle.dts b/arch/arm/boot/dts/am335x-pocketbeagle.dts
-index 6d875cf13e09..3d7bad8bfb2f 100644
+index e35d84ca5706..8042917b3b3b 100644
 --- a/arch/arm/boot/dts/am335x-pocketbeagle.dts
 +++ b/arch/arm/boot/dts/am335x-pocketbeagle.dts
-@@ -214,7 +214,7 @@ &am33xx_pinmux {
- 	pinctrl-names = "default";
- 
- 	pinctrl-0 =   < &P2_03_gpio &P1_34_gpio &P2_19_gpio &P2_24_gpio
--			&P2_33_gpio &P2_22_gpio             &P2_10_gpio
-+			&P2_33_gpio &P2_22_gpio &P2_20_gpio &P2_10_gpio
- 			&P2_06_gpio &P2_04_gpio &P2_02_gpio &P2_08_gpio
- 			&P2_17_gpio >;
- 
-@@ -272,6 +272,16 @@ AM33XX_PADCONF(AM335X_PIN_GPMC_AD14, PIN_INPUT_PULLUP, MUX_MODE7)
+@@ -271,6 +271,16 @@ AM33XX_PADCONF(AM335X_PIN_GPMC_AD14, PIN_INPUT_PULLUP, MUX_MODE7)
  		pinctrl-single,bias-pulldown   = < 0x10  0x00  0x10  0x18>;
  	};
  

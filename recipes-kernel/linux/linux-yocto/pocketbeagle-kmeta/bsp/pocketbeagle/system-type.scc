@@ -1,3 +1,4 @@
 kconf hardware system-type.cfg
 patch 0001-arch-arm-configs-omap2plus_defconfig-remove-removed-.patch
 patch 0001-ARM-dts-am335x-pocketbeagle-update-LED-information.patch
+patch 0002-ARM-dts-am335x-pocketbeagle-remove-dependency-cycle.patch

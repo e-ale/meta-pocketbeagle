@@ -1,0 +1,36 @@
+From 5dac9d636ca88e34bede81f0092ca0fec4d978f6 Mon Sep 17 00:00:00 2001
+From: Trevor Woerner <twoerner@gmail.com>
+Date: Thu, 17 Aug 2023 11:16:35 -0400
+Subject: [PATCH v3 2/4] ARM: dts: am335x-pocketbeagle: remove dependency cycle
+
+Remove the self-referenceing "pinctrl-0" entry inside the pinmux clause.
+This eliminates the set of boot messages (one for each referenced pin)
+similar to the following:
+
+        platform 44e10800.pinmux: Fixed dependency cycle(s) with /ocp/interconnect@44c00000/segment@200000/target-module@10000/scm@0/pinmux@800/pinmux_P2_17_gpio
+
+Upstream-Status: Submitted
+Signed-off-by: Trevor Woerner <twoerner@gmail.com>
+---
+ arch/arm/boot/dts/am335x-pocketbeagle.dts | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/arch/arm/boot/dts/am335x-pocketbeagle.dts b/arch/arm/boot/dts/am335x-pocketbeagle.dts
+index 667dded1a167..d4d1770657da 100644
+--- a/arch/arm/boot/dts/am335x-pocketbeagle.dts
++++ b/arch/arm/boot/dts/am335x-pocketbeagle.dts
+@@ -217,11 +217,6 @@ &am33xx_pinmux {
+ 	compatible = "pinconf-single";
+ 	pinctrl-names = "default";
+ 
+-	pinctrl-0 =   < &P2_03_gpio &P1_34_gpio &P2_19_gpio &P2_24_gpio
+-			&P2_33_gpio &P2_22_gpio &P2_18_gpio &P2_10_gpio
+-			&P2_06_gpio &P2_04_gpio &P2_02_gpio &P2_08_gpio
+-			&P2_17_gpio >;
+-
+ 	/* P2_03 (ZCZ ball T10) gpio0_23 0x824 PIN 9 */
+ 	P2_03_gpio: pinmux_P2_03_gpio {
+ 		pinctrl-single,pins = <
+-- 
+2.41.0.327.gaa9166bcc0ba
+
