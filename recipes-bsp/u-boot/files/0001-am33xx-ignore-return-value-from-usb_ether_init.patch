@@ -1,0 +1,40 @@
+From d588612992e782881fcd318bfeccea9509eba14c Mon Sep 17 00:00:00 2001
+From: Trevor Woerner <twoerner@gmail.com>
+Date: Wed, 30 Aug 2023 22:34:38 -0400
+Subject: [PATCH] am33xx: ignore return value from usb_ether_init()
+
+In 2cb43ef1c223 ("usb: ether: Fix error handling in usb_ether_init") the error
+handling of usb_ether_init() was changed. Not a single other call site of this
+function checks its return value, therefore follow suit in the am33xx code.
+
+Do not cause the boot to halt if the usb gadget ethernet initialization fails:
+
+	initcall sequence 9ffdbd84 failed at call 808024b9 (err=-19)
+	### ERROR ### Please RESET the board ###
+
+Upstream-Status: Submitted
+Signed-off-by: Trevor Woerner <twoerner@gmail.com>
+---
+ arch/arm/mach-omap2/am33xx/board.c | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/arch/arm/mach-omap2/am33xx/board.c b/arch/arm/mach-omap2/am33xx/board.c
+index ecc0a592e993..8f772310a1a7 100644
+--- a/arch/arm/mach-omap2/am33xx/board.c
++++ b/arch/arm/mach-omap2/am33xx/board.c
+@@ -270,11 +270,7 @@ int arch_misc_init(void)
+ 		return ret;
+ 
+ #if defined(CONFIG_DM_ETH) && defined(CONFIG_USB_ETHER)
+-	ret = usb_ether_init();
+-	if (ret) {
+-		pr_err("USB ether init failed\n");
+-		return ret;
+-	}
++	usb_ether_init();
+ #endif
+ 
+ 	return 0;
+-- 
+2.41.0.327.gaa9166bcc0ba
+
