@@ -9,3 +9,4 @@ include bsp/pocketbeagle/update-leds.scc
 include bsp/pocketbeagle/omap-crypto.scc
 include bsp/pocketbeagle/pwm-counter.scc
 include bsp/pocketbeagle/pru-remoteproc-mbox.scc
+include bsp/pocketbeagle/usb.cfg
