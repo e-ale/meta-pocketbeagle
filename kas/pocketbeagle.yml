@@ -1,0 +1,19 @@
+header:
+  version: 10
+machine: pocketbeagle
+target:
+  - core-image-minimal
+repos:
+  poky:
+    url: https://git.yoctoproject.org/git/poky
+    branch: master
+    layers:
+      meta:
+      meta-poky:
+      meta-yocto-bsp:
+  meta-pocketbeagle:
+    # url: https://github.com/e-ale/meta-pocketbeagle.git
+    # branch: master
+local_conf_header:
+  'root-login without password': |
+    IMAGE_FEATURES += "debug-tweaks"
