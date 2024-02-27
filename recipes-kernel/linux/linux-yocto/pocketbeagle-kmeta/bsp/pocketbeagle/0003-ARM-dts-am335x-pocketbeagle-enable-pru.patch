@@ -1,7 +1,7 @@
-From 0a002475570a0e84d7e89871eeac2403d223a1ed Mon Sep 17 00:00:00 2001
+From 25a255d8ff090020203cd63fe6dfb4e584bb18e2 Mon Sep 17 00:00:00 2001
 From: Trevor Woerner <twoerner@gmail.com>
 Date: Tue, 15 Aug 2023 20:23:05 -0400
-Subject: [PATCH v3 3/4] ARM: dts: am335x-pocketbeagle: enable pru
+Subject: [PATCH 3/4] ARM: dts: am335x-pocketbeagle: enable pru
 
 Now that the PRU code is upstream and can be loaded via remoteproc, adjust
 the device tree to enable it and adjust the pin muxing so that the default
@@ -23,14 +23,16 @@ Caveat: In most cases, the silkscreen will indicate, for example, "PRU0.7",
 
 Upstream-Status: Submitted
 Signed-off-by: Trevor Woerner <twoerner@gmail.com>
+Adopted patch to linux-yocto 6.6 (OE release scarthgap):
+Signed-off-by: Joerg Hofrichter <joerg.hofrichter@ni.com>
 ---
- .../boot/dts/am335x-pocketbeagle.dts  | 46 +++++++++++++++----
+ .../boot/dts/ti/omap/am335x-pocketbeagle.dts  | 46 +++++++++++++++----
  1 file changed, 36 insertions(+), 10 deletions(-)
 
-diff --git a/arch/arm/boot/dts/am335x-pocketbeagle.dts b/arch/arm/boot/dts/am335x-pocketbeagle.dts
+diff --git a/arch/arm/boot/dts/ti/omap/am335x-pocketbeagle.dts b/arch/arm/boot/dts/ti/omap/am335x-pocketbeagle.dts
 index d4d1770657da..e35d84ca5706 100644
---- a/arch/arm/boot/dts/am335x-pocketbeagle.dts
-+++ b/arch/arm/boot/dts/am335x-pocketbeagle.dts
+--- a/arch/arm/boot/dts/ti/omap/am335x-pocketbeagle.dts
++++ b/arch/arm/boot/dts/ti/omap/am335x-pocketbeagle.dts
 @@ -121,7 +121,7 @@ &gpio1 {
  		"P2.24",
  		"P2.33",
@@ -45,7 +47,7 @@ index d4d1770657da..e35d84ca5706 100644
  	};
  
 -	/* P2_18 (ZCZ ball U13) gpio1_15 0x83c PIN 15 */
--	P2_18_gpio: pinmux_P2_18_gpio {
+-	P2_18_gpio: P2-18-gpio-pins {
 -		pinctrl-single,pins = <
 -			AM33XX_PADCONF(AM335X_PIN_GPMC_AD15, PIN_INPUT_PULLUP, MUX_MODE7)
 -		>;
@@ -54,7 +56,7 @@ index d4d1770657da..e35d84ca5706 100644
 -	};
 -
  	/* P2_10 (ZCZ ball R14) gpio1_20 0x850 PIN 20 */
- 	P2_10_gpio: pinmux_P2_10_gpio {
+ 	P2_10_gpio: P2-10-gpio-pins {
  		pinctrl-single,pins = <
 @@ -405,6 +396,27 @@ AM33XX_PADCONF(AM335X_PIN_GPMC_WAIT0, PIN_INPUT_PULLUP, MUX_MODE6)	/* (T17) gpmc
  			AM33XX_PADCONF(AM335X_PIN_GPMC_WPN, PIN_OUTPUT_PULLDOWN, MUX_MODE6)	/* (U17) gpmc_wpn.uart4_txd */
@@ -103,5 +105,5 @@ index d4d1770657da..e35d84ca5706 100644
 +	pinctrl-0 = <&pru1_pins>;
 +};
 -- 
-2.41.0.327.gaa9166bcc0ba
+2.39.2
 

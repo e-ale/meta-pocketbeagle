@@ -1,7 +1,7 @@
-From 8a1978f9b736e1f41a4ca731c8d1e1822c5c03fa Mon Sep 17 00:00:00 2001
+From 2c96a13d6483053804943edfe76bc7ff1e4be4af Mon Sep 17 00:00:00 2001
 From: Trevor Woerner <twoerner@gmail.com>
 Date: Tue, 15 Aug 2023 20:23:06 -0400
-Subject: [PATCH v3 4/4] ARM: dts: am335x-pocketbeagle: add missing GPIO mux
+Subject: [PATCH 4/4] ARM: dts: am335x-pocketbeagle: add missing GPIO mux
 
 Add the default MODE setting of a GPIO pin that was missing from the device
 tree (i.e. P2.20/gpio2_00). This is to ensure the GPIO pins match the
@@ -9,15 +9,17 @@ pocketbeagle wiring expectations.
 
 Upstream-Status: Submitted
 Signed-off-by: Trevor Woerner <twoerner@gmail.com>
+Adopted patch to linux-yocto 6.6 (OE release scarthgap):
+Signed-off-by: Joerg Hofrichter <joerg.hofrichter@ni.com>
 ---
- arch/arm/boot/dts/am335x-pocketbeagle.dts | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+ arch/arm/boot/dts/ti/omap/am335x-pocketbeagle.dts | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
-diff --git a/arch/arm/boot/dts/am335x-pocketbeagle.dts b/arch/arm/boot/dts/am335x-pocketbeagle.dts
-index e35d84ca5706..8042917b3b3b 100644
---- a/arch/arm/boot/dts/am335x-pocketbeagle.dts
-+++ b/arch/arm/boot/dts/am335x-pocketbeagle.dts
-@@ -271,6 +271,16 @@ AM33XX_PADCONF(AM335X_PIN_GPMC_AD14, PIN_INPUT_PULLUP, MUX_MODE7)
+diff --git a/arch/arm/boot/dts/ti/omap/am335x-pocketbeagle.dts b/arch/arm/boot/dts/ti/omap/am335x-pocketbeagle.dts
+index e35d84ca5706..95053d41a598 100644
+--- a/arch/arm/boot/dts/ti/omap/am335x-pocketbeagle.dts
++++ b/arch/arm/boot/dts/ti/omap/am335x-pocketbeagle.dts
+@@ -262,6 +262,15 @@ AM33XX_PADCONF(AM335X_PIN_GPMC_AD13, PIN_INPUT_PULLUP, MUX_MODE7)
  		pinctrl-single,bias-pulldown   = < 0x10  0x00  0x10  0x18>;
  	};
  
@@ -30,10 +32,9 @@ index e35d84ca5706..8042917b3b3b 100644
 +		pinctrl-single,bias-pulldown   = < 0x10  0x00  0x10  0x18>;
 +	};
 +
-+
- 	/* P2_10 (ZCZ ball R14) gpio1_20 0x850 PIN 20 */
- 	P2_10_gpio: pinmux_P2_10_gpio {
+ 	/* P2_22 (ZCZ ball V13) gpio1_14 0x838 PIN 14 */
+ 	P2_22_gpio: P2-22-gpio-pins {
  		pinctrl-single,pins = <
 -- 
-2.41.0.327.gaa9166bcc0ba
+2.39.2
 

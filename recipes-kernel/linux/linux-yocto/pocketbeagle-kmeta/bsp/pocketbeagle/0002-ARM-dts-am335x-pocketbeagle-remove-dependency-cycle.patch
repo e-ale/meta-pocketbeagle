@@ -1,7 +1,7 @@
-From 5dac9d636ca88e34bede81f0092ca0fec4d978f6 Mon Sep 17 00:00:00 2001
+From 7e72e8926a8b05203efc66bb727f5c25c5017fe9 Mon Sep 17 00:00:00 2001
 From: Trevor Woerner <twoerner@gmail.com>
 Date: Thu, 17 Aug 2023 11:16:35 -0400
-Subject: [PATCH v3 2/4] ARM: dts: am335x-pocketbeagle: remove dependency cycle
+Subject: [PATCH 2/4] ARM: dts: am335x-pocketbeagle: remove dependency cycle
 
 Remove the self-referenceing "pinctrl-0" entry inside the pinmux clause.
 This eliminates the set of boot messages (one for each referenced pin)
@@ -11,14 +11,16 @@ similar to the following:
 
 Upstream-Status: Submitted
 Signed-off-by: Trevor Woerner <twoerner@gmail.com>
+Adopted patch to linux-yocto 6.6 (OE release scarthgap):
+Signed-off-by: Joerg Hofrichter <joerg.hofrichter@ni.com>
 ---
- arch/arm/boot/dts/am335x-pocketbeagle.dts | 5 -----
+ arch/arm/boot/dts/ti/omap/am335x-pocketbeagle.dts | 5 -----
  1 file changed, 5 deletions(-)
 
-diff --git a/arch/arm/boot/dts/am335x-pocketbeagle.dts b/arch/arm/boot/dts/am335x-pocketbeagle.dts
+diff --git a/arch/arm/boot/dts/ti/omap/am335x-pocketbeagle.dts b/arch/arm/boot/dts/ti/omap/am335x-pocketbeagle.dts
 index 667dded1a167..d4d1770657da 100644
---- a/arch/arm/boot/dts/am335x-pocketbeagle.dts
-+++ b/arch/arm/boot/dts/am335x-pocketbeagle.dts
+--- a/arch/arm/boot/dts/ti/omap/am335x-pocketbeagle.dts
++++ b/arch/arm/boot/dts/ti/omap/am335x-pocketbeagle.dts
 @@ -217,11 +217,6 @@ &am33xx_pinmux {
  	compatible = "pinconf-single";
  	pinctrl-names = "default";
@@ -29,8 +31,8 @@ index 667dded1a167..d4d1770657da 100644
 -			&P2_17_gpio >;
 -
  	/* P2_03 (ZCZ ball T10) gpio0_23 0x824 PIN 9 */
- 	P2_03_gpio: pinmux_P2_03_gpio {
+ 	P2_03_gpio: P2-03-gpio-pins {
  		pinctrl-single,pins = <
 -- 
-2.41.0.327.gaa9166bcc0ba
+2.39.2
 
